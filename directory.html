@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">LMS</a></li>
+        </ul>
+    </nav>
+    <header id="dirHeader">
+    </header>
+    <main>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search by name or description">
+            <button id="search-button">Search</button>
+        </div>
+        <div class="category-buttons">
+            <button class="filter-button active" data-category="all">All</button>
+            <button class="filter-button" data-category="tutor">Tutors</button>
+            <button class="filter-button" data-category="institution">Institutions</button>
+        </div>
+        <div class="directory-container" id="directory-list">
+            <div class="directory-card" data-category="tutor" data-name="Tutor John Doe" data-description="Expert in Math">
+                <div class="profile-icon">
+                    <img src="images/userpfp1.jpg" alt="Tutor John Doe">
+                </div>
+                <h3>Tutor John Doe</h3>
+                <p>Expert in Math</p>
+            </div>
+            <div class="directory-card" data-category="tutor" data-name="Tutor Jane Smith" data-description="Specializes in Science">
+                <div class="profile-icon">
+                    <img src="images/userpfp1.jpg" alt="Tutor Jane Smith">
+                </div>
+                <h3>Tutor Jane Smith</h3>
+                <p>Specializes in Science</p>
+            </div>
+            <div class="directory-card" data-category="institution" data-name="College X" data-description="Offers various programs">
+                <div class="profile-icon">
+                    <img src="images/userpfp1.jpg" alt="College X">
+                </div>
+                <h3>College X</h3>
+                <p>Offers various programs</p>
+            </div>
+            <div class="directory-card" data-category="institution" data-name="College Y" data-description="Offers various programs">
+                <div class="profile-icon">
+                    <img src="images/userpfp1.jpg" alt="College Y">
+                </div>
+                <h3>College Y</h3>
+                <p>Offers various programs</p>
+            </div>
+            <div class="directory-card" data-category="institution" data-name="College Y" data-description="Offers various programs">
+                <div class="profile-icon">
+                    <img src="images/userpfp1.jpg" alt="College Y">
+                </div>
+                <h3>College Y</h3>
+                <p>Offers various programs</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        const cards = document.querySelectorAll('.directory-card');
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove 'active' class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add 'active' class to the clicked button
+                button.classList.add('active');
+
+                const category = button.dataset.category;
+
+                cards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block'; // Show the card
+                    } else {
+                        card.style.display = 'none';   // Hide the card
+                    }
+                });
+            });
+        });
+
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const description = card.dataset.description.toLowerCase();
+                if (name.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
