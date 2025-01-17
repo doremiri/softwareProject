@@ -14,17 +14,21 @@
         </ul>
     </nav>
     <header id="dirHeader">
+        <h1>Directory</h1> <!-- Title added here -->u
     </header>
     <main>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search by name or description">
-            <button id="search-button">Search</button>
+        <div class="filter-container">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search by name or description">
+                <button id="search-button">Search</button>
+            </div>
+            <div class="category-buttons">
+                <button class="filter-button active" data-category="all">All</button>
+                <button class="filter-button" data-category="tutor">Tutors</button>
+                <button class="filter-button" data-category="institution">Institutions</button>
+            </div>
         </div>
-        <div class="category-buttons">
-            <button class="filter-button active" data-category="all">All</button>
-            <button class="filter-button" data-category="tutor">Tutors</button>
-            <button class="filter-button" data-category="institution">Institutions</button>
-        </div>
+
         <div class="directory-container" id="directory-list">
             <div class="directory-card" data-category="tutor" data-name="Tutor John Doe" data-description="Expert in Math">
                 <div class="profile-icon">
